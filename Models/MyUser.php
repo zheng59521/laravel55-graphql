@@ -12,4 +12,9 @@ use Illuminate\Database\Eloquent\Model;
 class MyUser extends Model
 {
      protected $table = 'user';
+
+    public function job()
+    {
+        return $this->hasOne('App\Models\Job', 'id', 'j_id');
+    }
 }
