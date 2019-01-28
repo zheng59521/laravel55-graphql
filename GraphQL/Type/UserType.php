@@ -5,7 +5,8 @@ namespace App\GraphQL\Type;
 use GraphQL;
 use Graphql\Type\Definition\Type;
 use Folklore\GraphQL\Support\Type as GraphQLType;
-
+use App\Models\MyUser;
+use App\Models\Job;
 class UserType extends GraphQLType {
 
     /*
@@ -16,6 +17,7 @@ class UserType extends GraphQLType {
     protected $attributes = [
         'name' => 'user',
         'description' => '用户信息',
+        'model' => MyUser::class
     ];
 
     /*
