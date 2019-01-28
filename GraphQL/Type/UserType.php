@@ -13,7 +13,7 @@ class UserType extends GraphQLType {
     /*
      * 定义查询信息
      * 查询名称,
-     * 查询介绍
+     * 查询介绍 
      * */
     protected $attributes = [
         'name' => 'user',

@@ -35,8 +35,8 @@ class JobQuery extends Query
     public function args() {
         return [
             'id' => ['name'=>'id', 'type'=>Type::int()],
-            'job_name' => ['name' => 'job_name', 'type'=> Type::string()]
+            'name' => ['name' => 'job_name', 'type'=> Type::string()]
         ];
     }
-
+    
 }

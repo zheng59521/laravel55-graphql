@@ -8,8 +8,10 @@
 
 namespace App\GraphQL\Type;
 
-use GraphQL\Type\Definition\Type;
-use Folklore\GraphQL\Support\Type as GraphQlType;
+use App\Models\Job;
+use Graphql\Type\Definition\Type;
+use Folklore\GraphQL\Support\Type as GraphQLType;
+
 
 class JobType extends GraphQlType
 {
@@ -20,6 +22,7 @@ class JobType extends GraphQlType
     protected $attributes = [
         'name' => 'job',
         'description' => '工作',
+        'model' => Job::class
     ];
 
     /*
@@ -27,15 +30,25 @@ class JobType extends GraphQlType
      * */
     public function fields () {
         return [
-            'id' => [
-                'name' => Type::nonNull(Type::int()),
+            'job_id' => [
+                'type' => Type::nonNull(Type::int()),
                 'description' => '工作id'
             ],
             'job_name' => [
-                'name' => Type::string(),
+                'type' => Type::string(),
                 'description' => '工作名称'
-            ],
+            ]
         ];
     }
 
+    /*
+     * 返回字段与数据库关联
+     * */
+    public function resolveJOBIDField ($root, $args) {
+        return (int) $root->id;
+    }
+
+    public function resolveJOBNAMEField ($root, $args) {
+        return (string) '我的工作是 '.$root->name;
+    }
 }
