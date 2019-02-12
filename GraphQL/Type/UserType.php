@@ -34,9 +34,21 @@ class UserType extends GraphQLType {
                 'type' => Type::string(),
                 'description' => '用户名',
             ],
+            'pwd' => [
+                'type' => Type::string(),
+                'description' => '密码',
+            ],
             'jid' => [
                 'type' => Type::int(),
                 'description' => '关联id'
+            ],
+            'token' => [
+                'type' => Type::string(),
+                'description' => 'token'
+            ],
+            'code' => [
+                'type' => Type::int(),
+                'description' => '登录情况'
             ],
             'job' => [
                 'args' => [
@@ -51,7 +63,7 @@ class UserType extends GraphQLType {
                 ],
                 'type' => Type::listOf(GraphQL::type('job')),
                 'description' => '工作'
-            ]
+            ],
         ];
     }
 
@@ -65,9 +77,9 @@ class UserType extends GraphQLType {
     /*
      * username => user.name
      * */
-    protected function resolveUSERNAMEField($root, $args) {
-        return (string)strtolower('用户名为 '.$root->name);
-    }
+//    protected function resolveUSERNAMEField($root, $args) {
+//        return (string)strtolower('用户名为 '.$root->name);
+//    }
 
     /*
      * jid => user.j_id
